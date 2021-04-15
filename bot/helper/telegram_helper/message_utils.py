@@ -3,7 +3,7 @@ from telegram.message import Message
 from telegram.update import Update
 import time
 import psutil
-from bot import dispatcher, AUTO_DELETE_MESSAGE_DURATION, LOGGER, bot, \
+from bot import dispatcher, OWNER, AUTO_DELETE_MESSAGE_DURATION, LOGGER, bot, \
     status_reply_dict, status_reply_dict_lock, download_dict, download_dict_lock
 from bot.helper.ext_utils.bot_utils import get_readable_message, get_readable_file_size, MirrorStatus
 from telegram.error import TimedOut, BadRequest
@@ -159,7 +159,7 @@ def close(update, context):
     user_id = update.callback_query.from_user.id
     bot = context.bot
     query = update.callback_query
-    admins = bot.get_chat_member(chat_id, user_id).status in ['creator', 'administrator']
+    admins = bot.get_chat_member(chat_id, user_id).status in ['creator', 'administrator'] or user_id in [OWNER_ID]
     if admins:
         delete_all_messages()
     else:
