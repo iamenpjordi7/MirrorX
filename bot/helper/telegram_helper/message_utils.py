@@ -1,9 +1,9 @@
-from telegram import InlineKeyboardMarkup
+from telegram import InlineKeyboardMarkup, Inlinekeyboardbutton
 from telegram.message import Message
 from telegram.update import Update
 import time
 import psutil
-from bot import AUTO_DELETE_MESSAGE_DURATION, LOGGER, bot, \
+from bot import dispatcher, AUTO_DELETE_MESSAGE_DURATION, LOGGER, bot, \
     status_reply_dict, status_reply_dict_lock, download_dict, download_dict_lock
 from bot.helper.ext_utils.bot_utils import get_readable_message, get_readable_file_size, MirrorStatus
 from telegram.error import TimedOut, BadRequest
@@ -100,7 +100,9 @@ def update_all_messages():
                 if len(msg) == 0:
                     msg = "Starting DL"
                 try:
-                    editMessage(msg, status_reply_dict[chat_id])
+                    keyboard = [[InlineKeyboardButton("🔄 REFRESH 🔄", callback_data=str(ONE)),
+                                 InlineKeyboardButton("❌ CLOSE ❌", callback_data=str(TWO)),]]
+                    editMessage(msg, status_reply_dict[chat_id], reply_markup=InlineKeyboardMarkup(keyboard))
                 except Exception as e:
                     LOGGER.error(str(e))
                 status_reply_dict[chat_id].text = msg
@@ -143,3 +145,26 @@ def sendStatusMessage(msg, bot):
             progress = "Starting DL"
         message = sendMessage(progress, bot, msg)
         status_reply_dict[msg.message.chat.id] = message
+
+ONE, TWO = range(2)
+
+def refresh(update, context):
+    query = update.callback_query
+    query.edit_message_text(text="Refreshing...")
+    time.sleep(2)
+    update_all_messages()
+    
+def close(update, context):
+    chat_id  = update.effective_chat.id
+    user_id = update.callback_query.from_user.id
+    bot = context.bot
+    query = update.callback_query
+    admins = bot.get_chat_member(chat_id, user_id).status in ['creator', 'administrator']:
+    if admins
+        delete_all_messages()
+    else:
+        query.answer(text="You dont Have admin Rights!", show_alert=True)
+        
+
+dispatcher.add_handler(CallbackQueryHandler(refresh, pattern='^' + str(ONE) + '$'))
+dispatcher.add_handler(CallbackQueryHandler(close, pattern='^' + str(TWO) + '$'))
