@@ -159,8 +159,8 @@ def close(update, context):
     user_id = update.callback_query.from_user.id
     bot = context.bot
     query = update.callback_query
-    admins = bot.get_chat_member(chat_id, user_id).status in ['creator', 'administrator']:
-    if admins
+    admins = bot.get_chat_member(chat_id, user_id).status in ['creator', 'administrator']
+    if admins:
         delete_all_messages()
     else:
         query.answer(text="You dont Have admin Rights!", show_alert=True)
