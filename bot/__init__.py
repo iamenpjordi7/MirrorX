@@ -225,14 +225,6 @@ try:
             zipObj.extractall('/app/accounts')
 except KeyError:
     ACCOUNTS_ZIP_URL = None
-try:
-    CONFIG_URL = getConfig('CONFIG_URL')
-    if len(CONFIG_URL) == 0:
-        CONFIG_URL = None
-    else:
-        urllib.request.urlretrieve(CREDENTIALS_URL, '/app/config.env')
-except KeyError:
-    CONFIG_URL = None
 
 updater = tg.Updater(token=BOT_TOKEN)
 bot = updater.bot
