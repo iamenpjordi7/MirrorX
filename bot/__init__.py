@@ -204,7 +204,7 @@ try:
     if len(TOKEN_PICKLE_URL) == 0:
         TOKEN_PICKLE_URL = None
     else:
-        urllib.request.urlretrieve(TOKEN_PICKLE_URL, '/usr/src/app/token.pickle')
+        urllib.request.urlretrieve(TOKEN_PICKLE_URL, '/app/token.pickle')
 except KeyError:
     TOKEN_PICKLE_URL = None
 try:
@@ -212,7 +212,7 @@ try:
     if len(CREDENTIALS_URL) == 0:
         CREDENTIALS_URL = None
     else:
-        urllib.request.urlretrieve(CREDENTIALS_URL, '/usr/src/app/credentials.json')
+        urllib.request.urlretrieve(CREDENTIALS_URL, '/app/credentials.json')
 except KeyError:
     CREDENTIALS_URL = None
 try:
@@ -220,9 +220,9 @@ try:
     if len(ACCOUNTS_ZIP_URL) == 0:
         ACCOUNTS_ZIP_URL = None
     else:
-        urllib.request.urlretrieve(ACCOUNTS_ZIP_URL, '/usr/src/app/accounts.zip')
-        with ZipFile('/usr/src/app/accounts.zip', 'r') as zipObj:
-            zipObj.extractall('/usr/src/app/accounts')
+        urllib.request.urlretrieve(ACCOUNTS_ZIP_URL, '/app/accounts.zip')
+        with ZipFile('/app/accounts.zip', 'r') as zipObj:
+            zipObj.extractall('/app/accounts')
 except KeyError:
     ACCOUNTS_ZIP_URL = None
 
