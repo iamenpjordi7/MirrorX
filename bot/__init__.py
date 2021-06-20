@@ -222,7 +222,7 @@ try:
     else:
         urllib.request.urlretrieve(ACCOUNTS_ZIP_URL, '/app/accounts.zip')
         with ZipFile('/app/accounts.zip', 'r') as zipObj:
-            zipObj.extractall('/accounts')
+            zipObj.extractall('/app/accounts/')
 except KeyError:
     ACCOUNTS_ZIP_URL = None
 
