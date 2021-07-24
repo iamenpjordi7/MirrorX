@@ -1,5 +1,5 @@
 # Base Image
-FROM ghcr.io/iamliquidx/mirrorx
+FROM ghcr.io/gautam1834/gmirror
 
 # Home Dir
 WORKDIR /app/
