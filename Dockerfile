@@ -32,4 +32,4 @@ RUN mv extract /usr/local/bin && \
     chmod +x /usr/local/bin/pextract && \
     wget https://raw.githubusercontent.com/gautam1834/slam-tg-mirror-bot/master/requirements.txt \
     && pip3 install --no-cache-dir -r requirements.txt \
-    && rm requirements.txt \
+    && rm requirements.txt
