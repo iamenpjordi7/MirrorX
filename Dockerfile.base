@@ -25,3 +25,7 @@ RUN sed -i 's/main/main non-free/g' /etc/apt/sources.list && \
     wget -q https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz && \
     tar -xf ff*.tar.xz && rm -rf *.tar.xz && \
     mv ff*/ff* /usr/local/bin/ && rm -rf ff*
+
+RUN wget https://raw.githubusercontent.com/gautam1834/slam-tg-mirror-bot/master/requirements.txt \
+    && pip3 install --no-cache-dir -r requirements.txt \
+    && rm requirements.txt \
