@@ -1,9 +1,9 @@
-name: MirrorX Base image
+name: GMirror Base image
 
 on: workflow_dispatch
 
 env:
-  IMAGE: ghcr.io/iamliquidx/mirrorx
+  IMAGE: ghcr.io/gautam1834/gmirror
 
 jobs:
   push:
