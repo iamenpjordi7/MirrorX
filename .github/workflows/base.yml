@@ -3,7 +3,7 @@ name: GMirror Base image
 on: workflow_dispatch
 
 env:
-  IMAGE: ghcr.io/gautam1834/gmirror
+  IMAGE: ghcr.io/gautam1834/gformirror
 
 jobs:
   push:
