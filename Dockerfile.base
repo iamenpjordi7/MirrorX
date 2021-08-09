@@ -26,7 +26,7 @@ RUN sed -i 's/main/main non-free/g' /etc/apt/sources.list && \
     tar -xf ff*.tar.xz && rm -rf *.tar.xz && \
     mv ff*/ff* /usr/local/bin/ && rm -rf ff*
 
-RUN RUN curl -sLo /usr/local/bin/extract https://raw.githubusercontent.com/breakdowns/slam-tg-mirror-bot/master/extract \
+RUN curl -sLo /usr/local/bin/extract https://raw.githubusercontent.com/breakdowns/slam-tg-mirror-bot/master/extract \
     && curl -sLo /usr/local/bin/pextract https://raw.githubusercontent.com/breakdowns/slam-tg-mirror-bot/master/pextract \
     && chmod +x /usr/local/bin/extract /usr/local/bin/pextract \
     && wget https://raw.githubusercontent.com/gautam1834/slam-tg-mirror-bot/master/requirements.txt \
