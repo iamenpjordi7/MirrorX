@@ -26,10 +26,9 @@ RUN sed -i 's/main/main non-free/g' /etc/apt/sources.list && \
     tar -xf ff*.tar.xz && rm -rf *.tar.xz && \
     mv ff*/ff* /usr/local/bin/ && rm -rf ff*
 
-RUN mv extract /usr/local/bin && \
-    mv pextract /usr/local/bin && \
-    chmod +x /usr/local/bin/extract && \
-    chmod +x /usr/local/bin/pextract && \
-    wget https://raw.githubusercontent.com/gautam1834/slam-tg-mirror-bot/master/requirements.txt \
+RUN curl -sLo /usr/local/bin/extract https://raw.githubusercontent.com/breakdowns/slam-tg-mirror-bot/master/extract \
+    && curl -sLo /usr/local/bin/pextract https://raw.githubusercontent.com/breakdowns/slam-tg-mirror-bot/master/pextract \
+    && chmod +x /usr/local/bin/extract /usr/local/bin/pextract \
+    && wget https://raw.githubusercontent.com/gautam1834/slam-tg-mirror-bot/master/requirements.txt \
     && pip3 install --no-cache-dir -r requirements.txt \
     && rm requirements.txt
