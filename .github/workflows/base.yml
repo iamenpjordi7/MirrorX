@@ -3,7 +3,7 @@ name: GMirror Base image
 on: workflow_dispatch
 
 env:
-  IMAGE: ghcr.io/gautam1834/gformirror
+  IMAGE: ghcr.io/gautam1834/qbitaria
 
 jobs:
   push:
