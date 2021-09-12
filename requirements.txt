@@ -1,3 +1,4 @@
 psycopg2-binary
 heroku3
+cloudscrape
 pyshorteners
