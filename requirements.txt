@@ -1,4 +1,3 @@
-pyrogram
 psycopg2-binary
 heroku3
 pyshortners
