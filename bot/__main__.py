@@ -43,7 +43,8 @@ def stats(update, context):
 
 def start(update, context):
     start_string = f'''
-This MilfBOT can mirror all your links to Google drive!
+<b>Hey {update.message.chat.first_name} I'm MilfMirrorBOT which can mirror all your Torrents, Direct links & Mega links to google drive</b>   
+<b>Bot Owner : </b> @brazzer_jordi
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
     sendMessage(start_string, context.bot, update)
